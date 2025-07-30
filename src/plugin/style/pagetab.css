@@ -1,0 +1,27 @@
+.card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+label {
+    font-weight: 600;
+}
+.page-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-field input {
+    border: 1px solid lightgray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px 0px 5px 10px;
+}
+
+.page-country {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}

@@ -1,0 +1,114 @@
+.dashboard {
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-header > div {
+    flex: 1;
+}
+
+.dashboard-header h1 {
+    color: #1e293b;
+}
+
+.dashboard-header .actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+.dashboard-header .actions .p-button.p-button-secondary {
+    background-color: #1e293b;
+    border-color: #1e293b;
+    color: #ffffff;
+}
+.dashboard-header .actions .p-button.p-button-secondary.p-button-outlined {
+    background-color: transparent;
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+.dashboard .layout {
+    border-radius: 4px;
+    background-color: #dfdfdf;
+    color: #374151;
+    padding: 4px;
+}
+
+.dashboard .layout-btn {
+    padding: 5px 10px;
+}
+
+.dashboard .layout .wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.dashboard .layout .wrapper .menubar {
+    display: flex;
+    width: 100%;
+    margin: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard .layout .wrapper .menubar div {
+    text-transform: capitalize;
+    list-style: none;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 16px;
+    flex: 1;
+}
+
+.dashboard .go-out {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    border: 0.1px solid gainsboro;
+}
+
+.dashboard .layout-controls {
+    border: 1px solid #e2e8f0;
+}
+
+.dashboard .p-button-save {
+    background-color: #1e293b;
+    border-color: #1e293b;
+    color: #ffffff;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.dashboard .p-button-save:hover {
+    color: greenyellow;
+}
+
+.dashboard .p-button-save:active {
+    background-color: #ffffff;
+}
+
+.dashboard .p-button-outlined.p-button-secondary {
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+.dashboard .p-button-text.p-button-secondary {
+    color: #9ca3af;
+}
+
+.dashboard .actions button {
+    padding: 5px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.dashboard .active-bg {
+    background-color: white; /* or any color you want */
+}

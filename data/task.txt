@@ -1,0 +1,159 @@
+I need a reusable Vue.js plugin that provides a dynamic configuration dashboard built with:
+1. SQLite database integration (auto-creates fields based on config schema)
+2. Fully customizable layouts (draggable/reorderable input fields)
+3. Tabbed interface for categorized settings
+4. Type-safe component binding (UI components matched to data types)
+
+## **Core Responsibilities**
+### **1. Plugin Development**
+- Create a Vue 3 plugin installable via `app.use()`
+- Support both Composition and Options API
+- Implement tree-shaking for optimal bundle size
+- TypeScript support with type definitions
+
+### **2. SQLite Integration**
+- Automatic table creation/migrations based on config schema
+- Field-type mapping:
+```typescript
+{
+'darkMode': { type: 'boolean', component: 'toggle', tab: 'Appearance' },
+'apiTimeout': { type: 'number', component: 'slider', tab: 'Network' }
+}
+```
+- CRUD operations with reactive data binding
+
+### **3. Dashboard Features**
+| Feature | Requirements |
+|---------|--------------|
+| **Tab System** | Categories defined in schema, lazy-loaded |
+| **Layout Control** | Drag-and-drop positioning via `vue-draggable` |
+| **Component Binding** | Auto-select appropriate component per data type |
+| **Validation** | Prevent incompatible component-data pairings |
+
+### **4. Customization System**
+```javascript
+// Host app should be able to:
+app.use(ConfigDashboard, {
+tabs: [{ id: 'advanced', label: 'Dev Options' }], // Custom tabs
+layout: {
+type: 'grid', // or 'freeform'
+columns: 2
+},
+components: {
+customToggle: CustomToggleComponent // Override defaults
+}
+})
+```
+
+## **Technical Requirements**
+### **Mandatory**
+- Vue 3 + TypeScript
+- SQLite via [sql.js](https://github.com/sql-js/sql.js) or similar
+- Pinia/Vuex for state management
+- Responsive grid system (CSS Grid/Flexbox)
+- Drag-and-drop reordering
+
+### **Nice-to-Have**
+- Visual layout editor (preview mode)
+- Schema versioning/migrations
+- Export/import configurations
+- Undo/redo support
+
+## **Deliverables**
+1. **Vue Plugin Package** (UMD + ES modules)
+2. **Documentation**:
+- Schema definition syntax
+- Plugin initialization options
+- Custom component integration
+3. **Demo Project** showing:
+- Basic implementation
+- Custom layout example
+- Tabbed interface
+4. **Testing**:
+- Unit tests (Vitest/Jest)
+- Type validation tests
+
+## **Evaluation Criteria**
+1. **Integration Simplicity** (How easily it plugs into existing apps)
+2. **Layout Flexibility** (Positioning customization depth)
+3. **Type Safety** (Prevents invalid component-data pairings)
+4. **Performance** (SQLite operations, reactivity efficiency)
+
+## **Project Timeline**
+- **Phase 1**: Core plugin + SQLite (Within 1st week)
+- **Phase 2**: Tab system + layout controls (Within 1st week)
+- **Phase 3**: Customization API + documentation (Within 1st or 2nd week)
+
+Here’s a refined version of your **Job Description** with **absolute clarity** that customization happens **in the host project**, not the plugin’s source files. I’ll highlight key changes to ensure freelancers understand this critical requirement:
+
+---
+
+#### **❗ Critical Requirement**
+All customization (layouts, tabs, components) **must be configurable from the host project** without modifying the plugin’s core files.
+
+---
+
+### **Customization Scope (Done in Host Projects)**
+| Feature | How Host Projects Customize It |
+|---------|--------------------------------|
+| **Layouts** | Via props: `layout: { type: 'grid', columns: 3 }` or `drag-and-drop` in the host app |
+| **Tabs** | Pass tab definitions during plugin init: `tabs: [{ id: 'user', label: 'User Settings' }]` |
+| **UI Components** | Override defaults: `components: { toggle: CustomToggle }` |
+| **Styling** | CSS vars: `--config-primary-color: #0066cc` in host app’s stylesheet |
+
+---
+
+### **Plugin Design Rules (Freelancer Must Follow)**
+1. **Zero Hardcoding**
+- No pre-defined tabs/layouts in plugin source
+- All config comes from host project’s `app.use()` options
+
+2. **Extension Points**
+```javascript
+// Host project can:
+app.use(ConfigDashboard, {
+// 1. Define tabs
+tabs: [{ id: 'advanced', icon: '⚙️' }],
+
+// 2. Customize components
+components: {
+string: CustomTextInput // Override default text input
+},
+
+// 3. Layout engine options
+layout: {
+engine: 'grid', // or 'freeform'
+gaps: '20px'
+}
+})
+```
+
+3. **Example Project Included**
+- Freelancer must provide a demo showing:
+- How to **add new tabs** in a Vue CLI project
+- How to **reposition fields** via drag-and-drop
+- How to **override styles** via host app’s CSS
+
+---
+
+### **Evaluation Criteria**
+✅ **Plugin works 100% out-of-the-box** with defaults
+✅ **All customizations** are done via host project’s code
+✅ **No assumptions** about tabs/layouts in plugin source
+✅ **Documentation** clearly shows host-level customization
+
+---
+
+### **Red Flags in Proposals**
+“I’ll pre-build tabs for common use cases” → **Wrong** (tabs must be defined by host)
+“You can fork the plugin to customize” → **Wrong** (must work via config)
+“The demo shows hardcoded categories” → **Wrong** (demo must prove dynamic tabs)
+
+
+### **Notes for Applicants**
+Please include in your proposal:
+1. Examples of previous Vue plugin work
+2. Approach for handling SQLite-Vue reactivity
+3. Solution for layout persistence (how positions are saved)
+
+I have also included images of what the UI should look like
